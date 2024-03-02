@@ -40,17 +40,36 @@ configure in the usart 2 as asynchronous mode and set the baud rate as 115200 as
 
 
 ## STM 32 CUBE PROGRAM :
-#include "main.h"
+#include "stdio.h"
 
-#include"stdio.h"
+#if defined (ICCARM) || defined ARMCC_VERSION)
 
-#if defined (_ICCARM) || defined (_ARMCC_VERSION)
+#define PUTCHAR_PROTOTPYE int fputc(int ch, FILE *f)
 
-#define PUTCHAR_PROTOTYPE int fputc(int ch, FILE *f)
+#elif defined(GNUC)
 
-#elif defined(_GNUC_)
+#define PUTCHAR_PROTOTPYE int_io_putchar(int ch)
 
+#endif
 
+while(1)
+
+{
+
+printf(deepika\n212223230038\n)
+
+HAL_Delay(500);
+
+}
+
+PUTCAHR_PROTOTYPE
+
+{
+
+HAL_UART_Transmit(&huart2, (unit8_t*)&ch, 1, 0xFFFF);
+
+return ch;
+}
 
 
 ## Output screen shots of Serial port utility   :
